@@ -1,4 +1,4 @@
-# grpc_kafka_test
+# grpc-kafka-test
 ## Preconditions
 Run Kafka Zookeeper and Broker services on the Kafka folder
 ```bash
