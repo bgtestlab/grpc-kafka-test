@@ -1,0 +1,21 @@
+syntax = "proto3";
+import "profile.proto";
+
+message History {
+  int32 id = 1;
+  string name = 2;
+  repeated Profile.Team teams = 3;
+}
+
+message HistoryRequest {
+  int32 id = 1;
+}
+
+message HistoryResponse {
+  repeated Profile.Team teams = 3;
+}
+
+service HistoryService {
+    rpc Get(HistoryRequest) returns (HistoryResponse);
+}
+

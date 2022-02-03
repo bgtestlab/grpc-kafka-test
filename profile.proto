@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+message Profile {
+  enum Role {
+    PRODUCT_OWNER = 0;
+    ENGINEER = 1;
+    DESIGNER = 2;
+    QA_MANAGER = 3;
+    OPERATOR = 4;
+  }
+
+  enum Team {
+    APPLE = 0;
+    BANANA = 1;
+    CHERRY = 2;
+    DURIAN = 3;
+  }
+
+  enum Channel {
+    DEVELOPMENT = 0;
+    TODAY_I_LEARNED = 1;
+    OFFICE = 2;
+    HAVE_FUN = 3;
+  }
+
+  int32 id = 1;
+  string name = 2;
+  Team team = 3;
+  Role role = 4;
+  repeated Channel channels = 5;
+  repeated Team previousTeams = 6;
+}
+
+message Empty {
+
+}
+
+message ProfileRequest{
+  string name = 1;
+}
+
+message CreateResponse{
+  bool status = 1;
+}
+
+message ListProfiles{
+  repeated Profile profiles = 1;
+}
+
+service ProfileService {
+    rpc Create(Profile) returns (CreateResponse);
+    rpc Get(ProfileRequest) returns (ListProfiles);
+    rpc GetList(Empty) returns (ListProfiles);
+}
+
